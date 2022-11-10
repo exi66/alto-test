@@ -163,6 +163,7 @@ class My_module extends Module
   {
     $min = Configuration::get('MY_MODULE_MIN');
     $max = Configuration::get('MY_MODULE_MAX');
+    if (empty($min) || empty($max)) return;
     $query = 'SELECT COUNT(*) FROM `'._DB_PREFIX_.'product` WHERE `price`>'.$min.' AND `price`<'.$max;
     $count = Db::getInstance()->getValue($query);
     $this->context->smarty->assign(
